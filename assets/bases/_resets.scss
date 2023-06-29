@@ -37,13 +37,3 @@ ul {
 em, i {
 	font-style: normal;
 }
-
-// body element
-// all width of window
-// min height of window height
-// disable overflow on x abscissa
-body {
-	width: 100vw;
-	min-height: 100vh;
-	overflow-x: hidden;
-}
