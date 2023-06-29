@@ -10,7 +10,7 @@ div {
 	width: 20px;
 	height: 5px;
 	background: red;
-	posiiton: relative;
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
