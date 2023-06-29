@@ -1,7 +1,6 @@
 header {
 	width: 100%;
-	height: 80px;
-	padding: 5vh 3vw;
+	padding: 0 3vw;
 	display: flex;
 	align-items: center;
 	
@@ -9,6 +8,15 @@ header {
 		display: flex;
 		align-items: center;
 		gap: 1vw;
-		font-size: 2.5vw;
+		font-size: 2.5em;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	header {
+		
+		h1 {
+			font-size: 3vw;
+		}
 	}
 }
