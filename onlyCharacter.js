@@ -34,13 +34,14 @@ blocText.className = 'blocText';
 const p = document.createElement('p')
 p.innerText = c.description
 
-
-
 bubles.append(cite);
 
 blocText.append(p);
 
 section.prepend(imgProfil, h2, bubles, blocText);
+
+const a = document.querySelector('.blueButton');
+a.href = '/addAndUpadate.html?id=' + c.id;
 
 }
 onlyCharactere(id);
