@@ -1,8 +1,6 @@
 const section = document.getElementById('cards')
 const theme = document.getElementById('theme')
 
-const url = window.location.href
-
 async function getCards() {
   // read our JSON
   let response = await fetch('https://character-database.becode.xyz/characters')
@@ -29,7 +27,7 @@ async function getCards() {
       const a = document.createElement('a')
       a.innerText = "Details"
       a.classList.add('blueButton')
-      a.href = url + 'onlyCharacter.html?id=' + c.id
+      a.href = '/onlyCharacter.html?id=' + c.id
       
       article.style.backgroundImage = "url(data:image/png;base64," + c.image + ")"
       
