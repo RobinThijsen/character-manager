@@ -41,27 +41,121 @@ body {
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
-  padding: 5vh;
 }
 
-.onlyCharacter {
-  background-color: grey;
+#pageCharacter {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.onlyCharacter figure {
-  background-color: rgb(255, 0, 0);
-  height: 300px;
-  width: 300px;
+#pageCharacter header {
+  width: 100%;
+}
+#pageCharacter #onlyCharacter {
+  width: 100%;
+  height: 100%;
+  padding: 0 2em;
+  gap: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+#pageCharacter #onlyCharacter img {
+  width: 220px;
+  height: 220px;
   border-radius: 100%;
 }
-.onlyCharacter img {
-  height: 250px;
-  width: 250px;
+#pageCharacter #onlyCharacter h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  padding-bottom: 2rem;
+}
+#pageCharacter #onlyCharacter figure {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  transform: translate(154px, -358px);
+}
+#pageCharacter #onlyCharacter figure .form {
+  position: absolute;
+}
+#pageCharacter #onlyCharacter figure cite {
+  width: 100px;
+  text-align: center;
 }
 
-.blue {
-  background-color: blue;
+@media screen and (max-width: 800px) {
+  #pageCharacter #onlyCharacter {
+    gap: 1vh;
+  }
+  #pageCharacter #onlyCharacter img {
+    width: 220px;
+    height: 220px;
+  }
+  #pageCharacter #onlyCharacter figure {
+    width: 220px;
+    height: 220px;
+    transform: translate(163px, -239px);
+  }
+  #pageCharacter #onlyCharacter figure cite {
+    width: 60px;
+    text-align: center;
+    font-size: 12px;
+  }
 }
+@media screen and (max-width: 520px) {
+  #pageCharacter #onlyCharacter {
+    gap: 1vh;
+  }
+  #pageCharacter #onlyCharacter figure {
+    transform: translate(163px, -242px);
+  }
+  #pageCharacter #onlyCharacter figure cite {
+    width: 60px;
+    text-align: center;
+    font-size: 12px;
+  }
+}
+/*.form {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform:rotate(45deg) ;
+    border: 5px solid black;
+    //position: relative;
 
+    &::after{
+        content: "";
+        width: 200px;
+        height: 200px;
+        background-color: $white;
+    transform:rotate(-45deg) ;
+    border: 5px solid black;
+       // clip-path: polygon(50% 0, 100% 0, 100% 35%, 100% 100%, 100% 100%, 45% 84%, 0 100%, 19% 70%, 0 57%, 0 0);
+
+        position: absolute;
+
+        z-index: 999;
+    }
+
+    cite {
+
+        text-align: center;
+        color: aliceblue;
+        position: relative;
+        z-index: 10;
+    }
+
+}*/
 main.cards {
   width: 100%;
   padding: 5vh 0;
