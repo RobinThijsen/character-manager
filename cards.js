@@ -1,7 +1,13 @@
 const section = document.getElementById('cards')
 const theme = document.getElementById('theme')
 
-async function getCards() {
+/**
+ *
+ * Get and set cards from API
+ * create an article with data from API
+ *
+ */
+async function getSetCards() {
   // read our JSON
   let response = await fetch('https://character-database.becode.xyz/characters')
   let characters = await response.json()
@@ -42,19 +48,22 @@ async function getCards() {
   return characters;
 }
 
+// getColor for theme
 const getColor = () => {
   const r = document.querySelector(':root')
   let rs = getComputedStyle(r)
   console.log("The value of --blue is: " + rs.getPropertyValue('--blue'))
 }
 
+// setColor for theme
 const setColor = (value, color) => {
   const r = document.querySelector(':root')
   r.style.setProperty(value, color)
 }
 
-getCards();
+getSetCards();
 
+// event on click on theme button
 theme.onclick = () => {
   console.log(theme.getAttribute('data-value'))
   if (theme.getAttribute("data-value") == '1') {
