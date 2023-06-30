@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/513e9627f7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title>Only Charactere</title>
   </head>
   <body>
    <header>
     <div>
       <h1>
-          name Character
+          Character manager
         </h1>
         <span></span>
-        <h1>
-          cards
-        </h1>
+        <a href="index.html">
+          <h1>cards</h1>
+        </a>
         <span></span>
-        <h1 class="second" id="onlyName"></h1>
+        <h1 class="active" id="onlyName"></h1>
     </div>
         
    </header> 
    <main id="pageCharacter">
     <section id="onlyCharacter">
       <figure>
-      <img src="/assets/Vector.svg" class="form">
+      <img src="/assets/Vector.svg" alt="bull" class="form">
       </figure>
+      <a class="blueButton">
+        Update
         <div>
-        <button type="submit" class="bluebutton">
-            Update Character
-        </button>
-        <button type="submit" class="red">
-            Delete Character
-        </button>
+          <i class="fa-solid fa-angle-right"></i>
+          <i class="fa-solid fa-angle-right"></i>
+          <i class="fa-solid fa-angle-right"></i>
         </div>
+      </a>
     </section>
     </main>
     <script src="/onlyCharacter.js" type="module"></script>

@@ -1,12 +1,28 @@
 const id = (new URLSearchParams(window.location.search)).get('id')
+
 const fileInput = document.getElementById("file")
 const nameInput = document.getElementById("name")
 const shortDescInput = document.getElementById("sDesc")
 const descInput = document.getElementById("desc")
 
 const addUpdate = document.getElementById("saveBtn")
-addUpdate.innerText = 'Add one'
 const del = document.getElementById("delete")
+const lastH1 = document.getElementById('last-h1')
+
+if (id != undefined) {
+	console.log('update')
+	getCard(
+		'https://character-database.becode.xyz/characters',
+		id,
+		nameInput,
+		shortDescInput,
+		descInput,
+		h1
+	)
+} else {
+	lastH1.textContent = "Add"
+	addUpdate.innerText = 'Add one'
+}
 
 function toDataURL(src) {
 	if (src) {
@@ -16,10 +32,11 @@ function toDataURL(src) {
 	}
 }
 
-async function getCard(url, id, nameInput, shortDescInput, descInput, fileInput) {
+async function getCard(url, id, nameInput, shortDescInput, descInput, fileInput, h1) {
 	let response = await fetch(url + id)
 	let character = await response.json()
 	
+	h1.innerText = character.name
 	nameInput.value = character.name
 	shortDescInput.value = character.shortDescription
 	descInput.value = character.description
@@ -68,11 +85,9 @@ async function deleteRequest(url) {
 
 addUpdate.onclick = () => {
 	if (id != undefined) {
-		console.log('update')
-		getCards('https://character-database.becode.xyz/characters', id)
 	} else {
 		console.log("hello")
-		setCards(nameInput, shortDescInput, descInput, fileInput)
+		setCard(nameInput, shortDescInput, descInput, fileInput)
 	}
 }
 
