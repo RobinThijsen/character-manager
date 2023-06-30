@@ -10,15 +10,18 @@
 	<header>
 	  <h1>Character manager</h1>
 	</header>
-	<section>
-		<input type="text" name="name" placeholder="Name..." value="">
-		<input type="text" name="cite" placeholder="Citation..." value="">
-		<textarea name="desc" placeholder="Description..."></textarea>
-		<div>
-			<button type="submit">Save changes</button>
-			<button type="submit">Delete character</button>
-		</div>
-	</section>
-	<script type="module" src="/main.js"></script>
+	<main class="add-update">
+		<section>
+			<input type="file" accept="image/png" name="image" id="file">
+			<input type="text" name="name" placeholder="Name..." id="name">
+			<input type="text" name="cite" placeholder="Citation..." id="sDesc">
+			<textarea name="desc" placeholder="Description..." id="desc"></textarea>
+			<div>
+				<button id="saveBtn" type="submit"></button>
+				<button id="delete" type="submit">Delete character</button>
+			</div>
+		</section>
+	</main>
+	<script type="module" src="/addUpdate.js"></script>
   </body>
 </html>

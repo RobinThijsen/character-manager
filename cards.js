@@ -1,12 +1,14 @@
 const section = document.getElementById('cards')
+const theme = document.getElementById('theme')
+
 const url = window.location.href
+
 async function getCards() {
-
   // read our JSON
-  let response = await fetch('https://character-database.becode.xyz/characters');
-  let character = await response.json();
+  let response = await fetch('https://character-database.becode.xyz/characters')
+  let characters = await response.json()
 
-  character.map(c => {
+  characters.map(c => {
     // cards container
     const article = document.createElement('article')
     // div element container
@@ -25,7 +27,8 @@ async function getCards() {
     // cards link
     const a = document.createElement('a')
     a.innerText = "Details"
-    a.setAttribute('href', url + 'onlyCharacter.html?key=' + c.id)
+    a.classList.add('blueButton')
+    a.href = url + 'onlyCharacter.html?id=' + c.id
     
     article.style.backgroundImage = "url(data:image/png;base64," + c.image + ")"
     
@@ -34,7 +37,35 @@ async function getCards() {
     section.append(article)
   })
 
-  return character;
+  return characters;
+}
+
+const getColor = () => {
+  const r = document.querySelector(':root')
+  let rs = getComputedStyle(r)
+  console.log("The value of --blue is: " + rs.getPropertyValue('--blue'))
+}
+
+const setColor = (value, color) => {
+  const r = document.querySelector(':root')
+  r.style.setProperty(value, color)
 }
 
 getCards();
+
+theme.onclick = () => {
+  console.log(theme.getAttribute('data-value'))
+  if (theme.getAttribute("data-value") == '1') {
+    theme.innerText = "Make it white"
+    theme.setAttribute("data-value", "2")
+    
+    setColor('background', 'hsla(0, 0%, 18%, 1)')
+    setColor('text', 'hsla(208, 100%, 97%, 1)')
+  } else {
+    theme.innerText = "Make it dark"
+    theme.setAttribute("data-value", "1")
+    
+    setColor('background', 'hsla(208, 100%, 97%, 1)')
+    setColor('text', 'hsla(0, 0%, 18%, 1)')
+  }
+}
