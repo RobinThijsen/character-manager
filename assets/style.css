@@ -51,11 +51,13 @@ body {
 
 #pageCharacter {
   width: 100%;
-  height: 80vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 5vh;
+  padding-bottom: 10vh;
 }
 #pageCharacter header {
   width: 100%;
@@ -72,14 +74,14 @@ body {
   position: relative;
 }
 #pageCharacter #onlyCharacter img {
-  width: 220px;
-  height: 220px;
+  margin-top: 5rem;
+  width: 420px;
+  height: 420px;
   border-radius: 100%;
 }
 #pageCharacter #onlyCharacter h2 {
   text-align: center;
   font-size: 2.5rem;
-  padding-bottom: 2rem;
 }
 #pageCharacter #onlyCharacter .blocText {
   padding: 3vh 2em;
@@ -92,9 +94,17 @@ body {
 }
 #pageCharacter #onlyCharacter .blocText p {
   font-family: "Bangers", cursive;
+  background-color: #9AC9FF;
+  padding: 1rem;
   letter-spacing: 1.3px;
   line-height: 1.5em;
   text-align: center;
+}
+#pageCharacter #onlyCharacter i {
+  position: relative;
+  font-size: 20rem;
+  bottom: 1113px;
+  left: 322px;
 }
 
 @media screen and (min-width: 1024px) {
