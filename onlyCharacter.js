@@ -41,7 +41,7 @@ blocText.append(p);
 section.prepend(imgProfil, h2, bubles, blocText);
 
 const a = document.querySelector('.blueButton');
-a.href = '/addAndUpadate.html?id=' + c.id;
+a.href = '/addAndUpdate.html?id=' + c.id;
 
 }
 onlyCharactere(id);
