@@ -15,24 +15,32 @@ nameCard.innerText = c.name;
 
 const section = document.querySelector('#onlyCharacter');
 
-
-
 const imgProfil = document.createElement('img');
 imgProfil.src = "data:image/png;base64," + c.image;
 
+//name character
 const h2 = document.createElement('h2');
 h2.innerText = c.name;
 
-const figure = document.querySelector('figure');
+//bubbles icon
+const bubles = document.createElement('div');
+bubles.className = 'bubles';
 
 const cite = document.createElement('cite')
 cite.innerText = c.shortDescription
 
+const blocText = document.createElement('div');
+blocText.className = 'blocText';
 const p = document.createElement('p')
 p.innerText = c.description
 
-figure.append(cite)
-section.prepend(  imgProfil, h2, p);
+
+
+bubles.append(cite);
+
+blocText.append(p);
+
+section.prepend(imgProfil, h2, bubles, blocText);
 
 }
 onlyCharactere(id);

@@ -26,13 +26,9 @@
 
         img{
             width: 220px;
-            height: 220px;
-            
-            
+            height: 220px;  
             border-radius: 100%;
-            
-
-           
+               
         }
 
         h2{
@@ -40,62 +36,53 @@
             font-size: 2.5rem;
             padding-bottom: 2rem;
         }
-        figure{
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            transform: translate(154px, -358px);
-            
 
-            .form {
-                position: absolute;                 
-            }
-
-            cite {
-                width: 100px;
-                text-align: center;
-            }
+        .blocText{
+                padding: 3vh 2em;
+                font-size: 1.4rem;
+                width: 90%;
+                color: $white;
+				transform: skew(-5deg);
+                background-color: $dark-blue;
+                box-shadow: 10px 10px 0px $text;
 
 
-        
-        }
-        
-    }
-
-}
-@media screen and (max-width: 800px){
-    #pageCharacter{
-        
-        #onlyCharacter{
-            gap: 1vh;
-            img{
-                width: 220px;
-                height: 220px;
-   
-            }
-    
-            h2{
-               
-            }
-
-            figure{
-                width: 220px;
-                height: 220px;
-                transform: translate(163px, -239px);                
-
-                cite {
-                    width: 60px;
+                p{
+                    font-family: 'Bangers', cursive;
+                    letter-spacing: 1.3px;
+                    line-height: 1.5em;
                     text-align: center;
-                    font-size: 12px;
                 }
-            
+        }
+
+    
+        
+    }
+        
+}
+
+
+@media screen and (min-width: 1024px){
+    #pageCharacter{
+     
+        
+    
+        header{
+    
+        }
+        #onlyCharacter{
+
+            .blocText{
+                
+                    width: 60%;
             }
+    
+        
             
         }
-    
-    }
+            
+    }  
+   
 }
 @media screen and (max-width: 520px){
     #pageCharacter{

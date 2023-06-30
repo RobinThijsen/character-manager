@@ -81,39 +81,25 @@ body {
   font-size: 2.5rem;
   padding-bottom: 2rem;
 }
-#pageCharacter #onlyCharacter figure {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  transform: translate(154px, -358px);
+#pageCharacter #onlyCharacter .blocText {
+  padding: 3vh 2em;
+  font-size: 1.4rem;
+  width: 90%;
+  color: hsl(0, 0%, 100%);
+  transform: skew(-5deg);
+  background-color: hsl(212, 86%, 28%);
+  box-shadow: 10px 10px 0px hsl(0, 0%, 18%);
 }
-#pageCharacter #onlyCharacter figure .form {
-  position: absolute;
-}
-#pageCharacter #onlyCharacter figure cite {
-  width: 100px;
+#pageCharacter #onlyCharacter .blocText p {
+  font-family: "Bangers", cursive;
+  letter-spacing: 1.3px;
+  line-height: 1.5em;
   text-align: center;
 }
 
-@media screen and (max-width: 800px) {
-  #pageCharacter #onlyCharacter {
-    gap: 1vh;
-  }
-  #pageCharacter #onlyCharacter img {
-    width: 220px;
-    height: 220px;
-  }
-  #pageCharacter #onlyCharacter figure {
-    width: 220px;
-    height: 220px;
-    transform: translate(163px, -239px);
-  }
-  #pageCharacter #onlyCharacter figure cite {
-    width: 60px;
-    text-align: center;
-    font-size: 12px;
+@media screen and (min-width: 1024px) {
+  #pageCharacter #onlyCharacter .blocText {
+    width: 60%;
   }
 }
 @media screen and (max-width: 520px) {
@@ -262,7 +248,7 @@ header div h1 {
   gap: 1vw;
   font-size: 2.5em;
 }
-header div h1.second {
+header div h1.active {
   color: hsl(212, 86%, 28%);
 }
 header div span {
