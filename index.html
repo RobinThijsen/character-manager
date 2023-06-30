@@ -9,17 +9,25 @@
   </head>
   <body>
     <header>
-      <h1>
-        Character manager
+      <div>
+        <h1>Character manager</h1>
         <span></span>
-        cards
-      </h1>
+        <h1 class="second">cards</h1>
+      </div>
+      <button data-value="1" id="theme">Make it dark</button>
     </header>
     <main class="cards">
       <section id="cards">
         
       </section>
-      <a href="addAndUpdate.html">Add one</a>
+      <a class="blueButton" href="addAndUpdate.html">
+        Add one
+        <div>
+          <i class="fa-solid fa-angle-right"></i>
+          <i class="fa-solid fa-angle-right"></i>
+          <i class="fa-solid fa-angle-right"></i>
+        </div>
+      </a>
     </main>
     <script type="module" src="/cards.js"></script>
   </body>

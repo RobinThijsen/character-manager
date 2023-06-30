@@ -1,0 +1,71 @@
+a.blueButton {
+	font-size: 2rem;
+	padding: 1em 2em;
+	font-family: 'Bangers', cursive;
+	background: $dark-blue;
+	box-shadow: 6px 6px 0 $text;
+	color: $white;
+	transition: all .3s ease;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	
+	div {
+		width: 3.5rem;
+		display: flex;
+		align-items: center;
+		position: relative;
+		
+		i {
+			color: $white;
+			position: absolute;
+			transition: all .3s ease;
+			font-size: 2.5rem;
+			right: 0;
+		} 
+	}
+	
+	&:hover {
+		box-shadow: 16px 16px 0 $orange;
+		
+		div {
+			
+			i {
+				animation-name: infiniteColor;
+				animation-iteration-count: infinite;
+				animation-duration: 1s;
+				
+				&:nth-child(1) {
+					right: .5em;
+				}
+				
+				&:nth-child(2) {
+					animation-delay: .25s;
+				}
+				
+				&:nth-child(3) {
+					right: -.5em;
+					animation-delay: .5s;
+				}
+			} 
+		}
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	a.blueButton {
+		transform: skew(-5deg);
+	}
+}
+
+@keyframes infiniteColor {
+	0% {
+		color: $white;
+	}
+	50% {
+		color: $orange;
+	}
+	100% {
+		color: $white;
+	}
+}
