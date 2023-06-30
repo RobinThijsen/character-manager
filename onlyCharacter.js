@@ -1,10 +1,10 @@
 
-const key = (new URLSearchParams(window.location.search)).get('key');
-//console.log(key);
+const id = (new URLSearchParams(window.location.search)).get('id');
+//console.log(id);
 
 
-async function onlyCharactere(key){
-let response = await fetch('https://character-database.becode.xyz/characters/'+ key);
+async function onlyCharactere(id){
+let response = await fetch('https://character-database.becode.xyz/characters/'+ id);
 let c = await response.json();
 
 const h1 = document.querySelector('#onlyName');
@@ -35,4 +35,4 @@ figure.append(cite)
 section.prepend(  imgProfil, h2, p);
 
 }
-onlyCharactere(key);
+onlyCharactere(id);
