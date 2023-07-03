@@ -27,7 +27,6 @@ h2.innerText = c.name;
 
 const cite = document.createElement('cite')
 cite.innerText = c.shortDescription
-
 const blocText = document.createElement('div');
 blocText.className = 'blocText';
 const p = document.createElement('p')
