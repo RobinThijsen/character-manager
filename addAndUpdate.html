@@ -16,15 +16,19 @@
 			<span></span>
 			<h1 id="last-h1" class="active"></h1>
 		</div>
-	  <button data-value="1" id="theme">Make it dark</button>
+	  	<button id="theme">
+			<span></span>
+			<i class="fa-solid fa-sun"></i>
+			<i class="fa-solid fa-moon"></i>
+	  	</button>
 	</header>
 	<main id="swup" class="add-update">
-		<section>
+		<form>
 			<input type="file" accept="image/png" name="image" id="file" required>
 			<input type="text" name="name" placeholder="Name..." id="name" required>
 			<input type="text" name="cite" placeholder="Citation..." id="sDesc" required>
 			<textarea name="desc" placeholder="Description..." id="desc" required></textarea>
-		</section>
+		</form>
 		<div>
 			<button id="saveBtn" type="submit" class="blueButton small"></button>
 			<button id="delete" type="submit" class="redButton">Delete character</button>

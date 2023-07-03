@@ -1,10 +1,10 @@
+const theme = document.getElementById('theme')
 console.log(localStorage.getItem('theme'))
 
 if (localStorage.getItem('theme') != null) {
 	if (localStorage.getItem('theme') == "dark") {
 		document.body.classList.add('dark-mode')
-		theme.innerText = "Make it white"
-		theme.style.color = "#fff"
+		theme.classList.add("dark-mode")
 	}
 }
 
@@ -12,17 +12,14 @@ if (localStorage.getItem('theme') != null) {
 theme.onclick = () => {
 	if (document.body.classList.contains('dark-mode')) {
 		document.body.classList.remove('dark-mode')
-		theme.innerText = "Make it dark"
-		theme.style.color = '#000'
+		theme.classList.remove("dark-mode")
 
 		localStorage.setItem('theme', 'white')
 		
 	} else {
 		document.body.classList.add('dark-mode')
-		theme.innerText = "Make it white"
-		theme.style.color = '#fff'
+		theme.classList.add("dark-mode")
 		
 		localStorage.setItem('theme', 'dark')
-		console.log(localStorage.getItem('theme'))
 	}
 }
