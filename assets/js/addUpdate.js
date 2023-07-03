@@ -11,16 +11,25 @@ const lastH1 = document.getElementById('last-h1')
 
 if (id != undefined) {
 	console.log('update')
-	getCard(
-		'https://character-database.becode.xyz/characters',
+	setCardInInput(
+		'https://character-database.becode.xyz/characters/',
 		id,
 		nameInput,
 		shortDescInput,
 		descInput,
-		h1
+		fileInput,
+		lastH1
 	)
+	addUpdate.innerText = "Save change"
+	const div = document.createElement('div')
+	for(let i = 0; i < 3; i++) {
+		const i = document.createElement('i')
+		i.classList.add('fa-solid', 'fa-angle-right')
+		div.append(i)
+	}
+	addUpdate.append(div)
 } else {
-	lastH1.textContent = "Add"
+	lastH1.innerText = "Add"
 	addUpdate.innerText = 'Add one'
 }
 

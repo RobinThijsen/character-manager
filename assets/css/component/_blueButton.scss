@@ -1,4 +1,4 @@
-a.blueButton {
+a.blueButton, button.blueButton {
 	font-size: 2rem;
 	padding: 1em 2em;
 	font-family: 'Bangers', cursive;
@@ -9,6 +9,7 @@ a.blueButton {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
+	cursor: pointer;
 	
 	div {
 		width: 3.5rem;
