@@ -23,8 +23,7 @@ const h2 = document.createElement('h2');
 h2.innerText = c.name;
 
 //bubbles icon
-const bubles = document.createElement('div');
-bubles.className = 'bubles';
+
 
 const cite = document.createElement('cite')
 cite.innerText = c.shortDescription
@@ -34,11 +33,10 @@ blocText.className = 'blocText';
 const p = document.createElement('p')
 p.innerText = c.description
 
-bubles.append(cite);
 
 blocText.append(p);
 
-section.prepend(imgProfil, h2, bubles, blocText);
+section.prepend(imgProfil, h2, cite, blocText);
 
 const a = document.querySelector('.blueButton');
 a.href = '/addAndUpdate.html?id=' + c.id;
