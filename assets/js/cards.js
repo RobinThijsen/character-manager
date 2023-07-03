@@ -46,8 +46,11 @@ function getSetCards(object) {
   return object;
 }
 
-// read our JSON
-let response = await fetch('https://character-database.becode.xyz/characters')
-let characters = await response.json()
-
-getSetCards(characters);
+async function getCharacters() {
+  // read our JSON
+  let response = await fetch('https://character-database.becode.xyz/characters')
+  let characters = await response.json()
+  
+  getSetCards(characters);
+}
+getCharacters()
