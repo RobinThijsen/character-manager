@@ -1,0 +1,18 @@
+a.redButton, button.redButton {
+	font-size: 2rem;
+	padding: 1em 2em;
+	font-family: 'Bangers', cursive;
+	background: $dark-red;
+	box-shadow: 6px 6px 0 $black;
+	color: $white;
+	transition: all .3s ease;
+	cursor: pointer;
+	border: 2px solid $dark-red;
+	
+	&:hover {
+		box-shadow: 12px 12px 0 $dark-red;
+		color: $dark-red;
+		background: $white;
+		border-color: $black;
+	}
+}

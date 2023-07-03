@@ -7,7 +7,7 @@
 // import vendors
 
 // import pages
-@import "pages/_all", "pages/_onlyCharacter", "pages/_cards";
+@import "pages/_all", "pages/_onlyCharacter", "pages/_cards", "pages/_addUpdate";
 
 // import layout
 @import "layout/_header";
@@ -15,4 +15,4 @@
 // import component
 @import "component/_blueButton", "component/_redButton", "component/_sectionBackground", "component/_pageTransition", "component/_searchBar";
 
-// import themes 
+// import themes

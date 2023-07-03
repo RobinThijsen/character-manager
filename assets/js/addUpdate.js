@@ -1,5 +1,7 @@
 const id = (new URLSearchParams(window.location.search)).get('id')
 
+const main = document.querySelector(".add-update")
+
 const fileInput = document.getElementById("file")
 const nameInput = document.getElementById("name")
 const shortDescInput = document.getElementById("sDesc")
@@ -22,6 +24,7 @@ if (id != undefined) {
 	)
 	addUpdate.innerText = "Save change"
 	const div = document.createElement('div')
+	
 	for(let i = 0; i < 3; i++) {
 		const i = document.createElement('i')
 		i.classList.add('fa-solid', 'fa-angle-right')
@@ -38,13 +41,30 @@ if (id != undefined) {
  * print reader.result
  * @param {src} url of image
  *
- */
+ *//*
 function toDataURL(src) {
-	if (src) {
+	console.log(src.name)
+	if (src.name) {
 		const reader = new FileReader()
-		reader.readAsDataURL(src)
-		console.log("reader = " + reader.result)
+		const result = reader.readAsDataURL(src)
+		console.log("result = " + result)
+		return result
 	}
+}
+*/
+function convertImageToBase64(imgUrl, callback) {
+  const image = new Image();
+  image.crossOrigin='anonymous';
+  image.onload = () => {
+	const canvas = document.createElement('canvas');
+	const ctx = canvas.getContext('2d');
+	canvas.height = image.naturalHeight;
+	canvas.width = image.naturalWidth;
+	ctx.drawImage(image, 0, 0);
+	const dataUrl = canvas.toDataURL();
+	callback && callback(dataUrl)
+  }
+  image.src = imgUrl.name;
 }
 
 /**
@@ -82,9 +102,16 @@ async function setCardInInput(url, id, nameInput, shortDescInput, descInput, fil
 	nameInput.value = character.name
 	shortDescInput.value = character.shortDescription
 	descInput.value = character.description
+	
+	const figure = document.createElement("figure")
+	const img = document.createElement("img")
+	img.src = "data:image/png;base64," + character.image
+	img.setAttribute('alt', "image of character")
+	figure.append(img)
+	main.prepend(figure)
 }
 
-async function setCard(nameInput, shortDescInput, descInput, fileInput) {
+function setCard(nameInput, shortDescInput, descInput, fileInput) {
   // read our JSON
   let data = {
 	  name: '',
@@ -96,10 +123,11 @@ async function setCard(nameInput, shortDescInput, descInput, fileInput) {
   data.name = nameInput.value
   data.shortDescription = shortDescInput.value
   data.description = descInput.value
-  data.image = toDataUrl(fileInput.files[0])
+  data.image = convertImageToBase64(fileInput.files[0], console.log)
   
-  console.log('set card')
-  //postRequest('https://character-database.becode.xyz/characters', data)
+  console.log("image = " + data.image)
+  
+  return data
 }
 
 /**
@@ -119,6 +147,24 @@ async function postRequest(url, data) {
 		}
 	}
 	
+	console.log('post', postObje)
+	
+	const response = await fetch(url, postObje)
+	const result = response.json()
+	
+	return result
+}
+
+async function putRequest(url, data) {
+	let postObje = {
+		method: 'PUT',
+		body: JSON.stringify(data),
+		headers: {
+			"Content-type": "application/json; charset=UTF-8"
+		}
+	}
+	
+	console.log('put', postObje)
 	const response = await fetch(url, postObje)
 	const result = response.json()
 	
@@ -133,25 +179,30 @@ async function postRequest(url, data) {
  * @return {response} the result of the delete
  *
  */
-async function deleteRequest(url, id) {
-	const response = await fetch(url + id, {
+async function deleteRequest(url) {
+	console.log('delete')
+	
+	const response = await fetch(url, {
 		method: 'DELETE',
 	})
 	
+	window.location.href = "/index.html"
 	return response
 }
 
 // event on click on add/update button
 addUpdate.onclick = () => {
+	console.log("id = " + id)
 	if (id != undefined) {
+		const data = setCard(nameInput, shortDescInput, descInput, fileInput)
+		putRequest('https://character-database.becode.xyz/characters/' + id, data)
 	} else {
-		console.log("hello")
-		//setCard(nameInput, shortDescInput, descInput, fileInput)
+		const data = setCard(nameInput, shortDescInput, descInput, fileInput)
+		postRequest('https://character-database.becode.xyz/characters', data)
 	}
 }
 
 // event on click on delete button
 del.onclick = () => {
-	console.log('delete')
-	//deleteRequest('https://character-database.becode.xyz/characters/' + id)
+	deleteRequest('https://character-database.becode.xyz/characters/' + id)
 }

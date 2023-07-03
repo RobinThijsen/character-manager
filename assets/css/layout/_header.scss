@@ -10,13 +10,17 @@ header {
 		align-items: center;
 		gap: 1vw;
 		
-		h1 {
+		& > h1 {
 			font-size: 2.5em;
 			position: relative;
 			z-index: 1;
 			
 			&.active {
 				color: $dark-blue;
+			}
+			
+			&:nth-child(1) {
+				display: none;
 			}
 		}
 		
@@ -26,6 +30,8 @@ header {
 			h1 {
 				color: $black;
 				font-family: 'Bangers', cursive;
+				z-index: 2;
+				position: relative;
 			}
 			
 			&::before {
@@ -44,7 +50,7 @@ header {
 			}
 		}
 		
-		span {
+		& > span {
 			width: 30px;
 			height: 5px;
 			background: $black;
@@ -60,6 +66,10 @@ header {
 				top: 0;
 				transform: rotate(-90deg);
 			}
+			
+			&:nth-child(2) {
+				display: none;
+			}
 		}
 	}
 }
@@ -71,6 +81,14 @@ header {
 			
 			h1 {
 				font-size: 3vw;
+				
+				&:nth-child(1) {
+					display: inline;
+				}
+			}
+			
+			span:nth-child(2) {
+				display: inline;
 			}
 		}
 	}

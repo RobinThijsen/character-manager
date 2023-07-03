@@ -3,4 +3,76 @@ body {
 	min-height: 100vh;
 	overflow-x: hidden;
 	background: $background;
+	
+	&.dark-mode {
+		background: $dark-blue;
+		color: $white;
+		
+		header {
+			a h1 {
+				color: $white;
+			}
+			
+			span, span::after {
+				background: $white;
+			}
+			
+			h1.active {
+				color: $orange;
+			}
+		}
+		
+		main.add-update {
+			
+			section {
+				
+				input, textarea {
+					background: $white;
+					color: $dark-blue;
+					
+					&::placeholder {
+						color: $dark-blue;
+					}
+				}
+			}
+		}
+		
+		main.cards {
+			section#cards {
+				article {
+					div {
+						background: $white;
+						color: $dark-blue;
+						
+						a {
+							background: $dark-blue;
+							color: $white;
+						}
+					}
+				}
+			}
+		}
+		
+		a.blueButton, button.blueButton {
+			background: $white;
+			color: $dark-blue;
+			
+			div i {
+				color: $dark-blue;
+				animation-name: infiniteColorDark;
+			}
+		}
+	}
+}
+
+@keyframes infiniteColorDark {
+	0% {
+		color: $dark-blue;
+	}
+	50% {
+		color: $orange;
+	}
+	100% {
+		color: $dark-blue;
+	}
 }

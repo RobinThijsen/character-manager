@@ -7,13 +7,10 @@ const theme = document.getElementById('theme')
  * create an article with data from API
  *
  */
-async function getSetCards() {
-  // read our JSON
-  let response = await fetch('https://character-database.becode.xyz/characters')
-  let characters = await response.json()
+function getSetCards(object) {
 
-  characters.map(c => {
-    if (c.image != undefined) {
+  object.map(c => {
+    //if (c.image != undefined) {
       // cards container
       const article = document.createElement('article')
       article.classList.add("cardHeroes");
@@ -42,20 +39,18 @@ async function getSetCards() {
       div.append(h2, cite, p, a)
       article.append(div)
       section.append(article)
-    } else {
+    /*} else {
       console.log("There was an error while trying to get the card " + c.id + "!")
-    }
+      console.log("info = " + c.name)
+    }*/
   })
 
-  return characters;
+  return object;
 }
 
-// getColor for theme
-const getColor = () => {
-  const r = document.querySelector(':root')
-  let rs = getComputedStyle(r)
-  console.log("The value of --blue is: " + rs.getPropertyValue('--blue'))
-}
+// read our JSON
+let response = await fetch('https://character-database.becode.xyz/characters')
+let characters = await response.json()
 
 // setColor for theme
 const setColor = (value, color) => {
@@ -83,3 +78,4 @@ theme.onclick = () => {
   }
 }
 
+getSetCards(characters);
