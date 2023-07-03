@@ -11,19 +11,34 @@ const lastH1 = document.getElementById('last-h1')
 
 if (id != undefined) {
 	console.log('update')
-	getCard(
-		'https://character-database.becode.xyz/characters',
+	setCardInInput(
+		'https://character-database.becode.xyz/characters/',
 		id,
 		nameInput,
 		shortDescInput,
 		descInput,
-		h1
+		fileInput,
+		lastH1
 	)
+	addUpdate.innerText = "Save change"
+	const div = document.createElement('div')
+	for(let i = 0; i < 3; i++) {
+		const i = document.createElement('i')
+		i.classList.add('fa-solid', 'fa-angle-right')
+		div.append(i)
+	}
+	addUpdate.append(div)
 } else {
-	lastH1.textContent = "Add"
+	lastH1.innerText = "Add"
 	addUpdate.innerText = 'Add one'
 }
 
+/**
+ *
+ * print reader.result
+ * @param {src} url of image
+ *
+ */
 function toDataURL(src) {
 	if (src) {
 		const reader = new FileReader()
@@ -32,7 +47,34 @@ function toDataURL(src) {
 	}
 }
 
-async function getCard(url, id, nameInput, shortDescInput, descInput, fileInput, h1) {
+/**
+ *
+ * Return the result of the fetch search API
+ * @param {url} url of the API
+ * @param {id} id of the character in API
+ * @return {result} result of the fetch
+ *
+ */
+async function getCard(url, id) {
+	let response = await fetch(url + id)
+	let result = await response.json()
+	
+	return result
+}
+
+/**
+ *
+ * set value of character in input
+ * @param {url} url of the API
+ * @param {id} id of the character on API
+ * @param {nameInput} input for the name
+ * @param {shortDescInput} input for the short desc
+ * @param {descInput} input for the desc
+ * @param {fileInput} input for the file
+ * @param {h1} element h1 to modify title
+ *
+ */
+async function setCardInInput(url, id, nameInput, shortDescInput, descInput, fileInput, h1) {
 	let response = await fetch(url + id)
 	let character = await response.json()
 	
@@ -60,6 +102,14 @@ async function setCard(nameInput, shortDescInput, descInput, fileInput) {
   //postRequest('https://character-database.becode.xyz/characters', data)
 }
 
+/**
+ *
+ * Post the data in the API
+ * @param {url} url of the API
+ * @param {data} data to set in the API
+ * @return {result} result of the fetch
+ *
+ */
 async function postRequest(url, data) {
 	let postObje = {
 		method: 'POST',
@@ -75,22 +125,32 @@ async function postRequest(url, data) {
 	return result
 }
 
-async function deleteRequest(url) {
-	const response = await fetch(url, {
+/**
+ *
+ * Delete a data in the API
+ * @param {url} url of the API
+ * @param {id} id of the data to delete in API
+ * @return {response} the result of the delete
+ *
+ */
+async function deleteRequest(url, id) {
+	const response = await fetch(url + id, {
 		method: 'DELETE',
 	})
 	
 	return response
 }
 
+// event on click on add/update button
 addUpdate.onclick = () => {
 	if (id != undefined) {
 	} else {
 		console.log("hello")
-		setCard(nameInput, shortDescInput, descInput, fileInput)
+		//setCard(nameInput, shortDescInput, descInput, fileInput)
 	}
 }
 
+// event on click on delete button
 del.onclick = () => {
 	console.log('delete')
 	//deleteRequest('https://character-database.becode.xyz/characters/' + id)

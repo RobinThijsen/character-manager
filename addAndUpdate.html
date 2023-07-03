@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://kit.fontawesome.com/513e9627f7.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="/assets/style.css">
+	<link rel="stylesheet" href="/assets/css/style.css">
 	<title>Vite App</title>
   </head>
   <body>
@@ -20,16 +20,17 @@
 	</header>
 	<main class="add-update">
 		<section>
-			<input type="file" accept="image/png" name="image" id="file">
-			<input type="text" name="name" placeholder="Name..." id="name">
-			<input type="text" name="cite" placeholder="Citation..." id="sDesc">
-			<textarea name="desc" placeholder="Description..." id="desc"></textarea>
+			<input type="file" accept="image/png" name="image" id="file" required>
+			<input type="text" name="name" placeholder="Name..." id="name" required>
+			<input type="text" name="cite" placeholder="Citation..." id="sDesc" required>
+			<textarea name="desc" placeholder="Description..." id="desc" required></textarea>
 			<div>
-				<button id="saveBtn" type="submit"></button>
+				<button id="saveBtn" type="submit" class="blueButton"></button>
 				<button id="delete" type="submit">Delete character</button>
 			</div>
 		</section>
 	</main>
-	<script type="module" src="/addUpdate.js"></script>
+	<script type="module" src="main.js"></script>
+	<script type="module" src="/assets/js/addUpdate.js"></script>
   </body>
 </html>

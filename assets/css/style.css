@@ -176,6 +176,7 @@ main.cards section#cards {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 2vw;
   gap: 5vw;
 }
 main.cards section#cards article {
@@ -305,7 +306,7 @@ header div span::after {
     font-size: 3vw;
   }
 }
-a.blueButton {
+a.blueButton, button.blueButton {
   font-size: 2rem;
   padding: 1em 2em;
   font-family: "Bangers", cursive;
@@ -316,35 +317,36 @@ a.blueButton {
   display: flex;
   align-items: center;
   gap: 1rem;
+  cursor: pointer;
 }
-a.blueButton div {
+a.blueButton div, button.blueButton div {
   width: 3.5rem;
   display: flex;
   align-items: center;
   position: relative;
 }
-a.blueButton div i {
+a.blueButton div i, button.blueButton div i {
   color: hsl(0, 0%, 100%);
   position: absolute;
   transition: all 0.3s ease;
   font-size: 2.5rem;
   right: 0;
 }
-a.blueButton:hover {
+a.blueButton:hover, button.blueButton:hover {
   box-shadow: 16px 16px 0 hsl(29, 100%, 63%);
 }
-a.blueButton:hover div i {
+a.blueButton:hover div i, button.blueButton:hover div i {
   animation-name: infiniteColor;
   animation-iteration-count: infinite;
   animation-duration: 1s;
 }
-a.blueButton:hover div i:nth-child(1) {
+a.blueButton:hover div i:nth-child(1), button.blueButton:hover div i:nth-child(1) {
   right: 0.5em;
 }
-a.blueButton:hover div i:nth-child(2) {
+a.blueButton:hover div i:nth-child(2), button.blueButton:hover div i:nth-child(2) {
   animation-delay: 0.25s;
 }
-a.blueButton:hover div i:nth-child(3) {
+a.blueButton:hover div i:nth-child(3), button.blueButton:hover div i:nth-child(3) {
   right: -0.5em;
   animation-delay: 0.5s;
 }
