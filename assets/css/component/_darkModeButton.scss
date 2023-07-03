@@ -1,0 +1,43 @@
+button#theme {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+	background: $dark-background;
+	padding: 1rem 1.5rem;
+	border-radius: 50px;
+	position: relative;
+	transition: all .3s ease;
+	
+	span {
+		position: absolute;
+		background: $background;
+		left: .5rem;
+		z-index: 200;
+		transition: all .3s ease;
+		width: 45%;
+		height: calc(100% - .8rem);
+		border-radius: 50px;
+	}
+	
+	i {
+		font-size: 1.3rem;
+		color: $dark-blue;
+		position: relative;
+		z-index: 220;
+		transition: all .3s ease;
+	}
+	
+	&.dark-mode {
+		background: $darkest-blue;
+		
+		span {
+			left: 3.5rem;
+			background: $dark-blue;
+		}
+		
+		i {
+			color: $white;
+		} 
+	}
+}

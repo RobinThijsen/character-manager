@@ -12,7 +12,6 @@ const del = document.getElementById("delete")
 const lastH1 = document.getElementById('last-h1')
 
 if (id != undefined) {
-	console.log('update')
 	setCardInInput(
 		'https://character-database.becode.xyz/characters/',
 		id,
@@ -41,32 +40,17 @@ if (id != undefined) {
  * print reader.result
  * @param {src} url of image
  *
- *//*
-function toDataURL(src) {
-	console.log(src.name)
-	if (src.name) {
+ */
+function toDataURL(src, callback) {
+	if (src) {
 		const reader = new FileReader()
-		const result = reader.readAsDataURL(src)
-		console.log("result = " + result)
-		return result
+		reader.onloadend = () => {
+			console.log(reader.result)
+		}
+		
+		reader.readAsDataURL(src)
 	}
 }
-*/
-function convertImageToBase64(imgUrl, callback) {
-  const image = new Image();
-  image.crossOrigin='anonymous';
-  image.onload = () => {
-	const canvas = document.createElement('canvas');
-	const ctx = canvas.getContext('2d');
-	canvas.height = image.naturalHeight;
-	canvas.width = image.naturalWidth;
-	ctx.drawImage(image, 0, 0);
-	const dataUrl = canvas.toDataURL();
-	callback && callback(dataUrl)
-  }
-  image.src = imgUrl.name;
-}
-
 /**
  *
  * Return the result of the fetch search API
@@ -114,16 +98,23 @@ async function setCardInInput(url, id, nameInput, shortDescInput, descInput, fil
 function setCard(nameInput, shortDescInput, descInput, fileInput) {
   // read our JSON
   let data = {
-	  name: '',
-	  shortDescription: '',
-	  description: '',
-	  image: ''
+	name: '',
+	shortDescription: '',
+	description: '',
+	image: ''
   }
+  let file = fileInput.files[0]
   
   data.name = nameInput.value
   data.shortDescription = shortDescInput.value
   data.description = descInput.value
-  data.image = convertImageToBase64(fileInput.files[0], console.log)
+  console.log("files = " + file)
+  
+  toDataURL(file, function(dataURL) {
+	data.image = dataURL
+  })
+  
+  console.log("data = " + toDataURL(file))
   
   console.log("image = " + data.image)
   
@@ -147,15 +138,10 @@ async function postRequest(url, data) {
 		}
 	}
 	
-	console.log('post', postObje)
-	
 	const response = await fetch(url, postObje)
-	const result = response.json()
-	
-	return result
 }
 
-async function putRequest(url, data) {
+async function putRequest(url, id, data) {
 	let postObje = {
 		method: 'PUT',
 		body: JSON.stringify(data),
@@ -164,10 +150,8 @@ async function putRequest(url, data) {
 		}
 	}
 	
-	console.log('put', postObje)
-	const response = await fetch(url, postObje)
+	const response = await fetch(url + id, postObje)
 	const result = response.json()
-	
 	return result
 }
 
@@ -187,22 +171,28 @@ async function deleteRequest(url) {
 	})
 	
 	window.location.href = "/index.html"
-	return response
 }
 
 // event on click on add/update button
 addUpdate.onclick = () => {
 	console.log("id = " + id)
-	if (id != undefined) {
+	
+	// if id put request to update
+	if (id != null) {
 		const data = setCard(nameInput, shortDescInput, descInput, fileInput)
-		putRequest('https://character-database.becode.xyz/characters/' + id, data)
+		putRequest('https://character-database.becode.xyz/characters/', id, data)
+	// else post request to add
 	} else {
 		const data = setCard(nameInput, shortDescInput, descInput, fileInput)
 		postRequest('https://character-database.becode.xyz/characters', data)
 	}
+	
 }
 
 // event on click on delete button
 del.onclick = () => {
-	deleteRequest('https://character-database.becode.xyz/characters/' + id)
+	let result = confirm("Are you sure ?")
+	if (result) {
+		deleteRequest('https://character-database.becode.xyz/characters/' + id)
+	}
 }

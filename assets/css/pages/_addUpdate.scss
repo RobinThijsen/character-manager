@@ -13,7 +13,7 @@ main.add-update {
 		}
 	}
 	
-	section {
+	form {
 		width: 100%;
 		padding: 5vh 2em;
 		display: flex;
@@ -77,7 +77,7 @@ main.add-update {
 
 @media screen and (min-width: 1024px) {
 	main.add-update {
-		section {
+		form {
 			input, textarea {
 				width: 50%;
 			}

@@ -56,11 +56,11 @@ body.dark-mode header span, body.dark-mode header span::after {
 body.dark-mode header h1.active {
   color: hsl(29, 100%, 63%);
 }
-body.dark-mode main.add-update section input, body.dark-mode main.add-update section textarea {
+body.dark-mode main.add-update form input, body.dark-mode main.add-update form textarea {
   background: hsl(0, 0%, 100%);
   color: hsl(212, 86%, 28%);
 }
-body.dark-mode main.add-update section input::placeholder, body.dark-mode main.add-update section textarea::placeholder {
+body.dark-mode main.add-update form input::placeholder, body.dark-mode main.add-update form textarea::placeholder {
   color: hsl(212, 86%, 28%);
 }
 body.dark-mode main.cards section#cards article div {
@@ -304,7 +304,7 @@ main.add-update {
 main.add-update figure img {
   border-radius: 50%;
 }
-main.add-update section {
+main.add-update form {
   width: 100%;
   padding: 5vh 2em;
   display: flex;
@@ -313,7 +313,7 @@ main.add-update section {
   justify-content: center;
   gap: 2vh;
 }
-main.add-update section input, main.add-update section textarea {
+main.add-update form input, main.add-update form textarea {
   width: 95%;
   background: hsl(212, 86%, 28%);
   box-shadow: 5px 5px 0 hsl(0, 0%, 0%);
@@ -322,22 +322,22 @@ main.add-update section input, main.add-update section textarea {
   transition: all 0.3s ease;
   border: 3px solid transparent;
 }
-main.add-update section input::placeholder, main.add-update section textarea::placeholder {
+main.add-update form input::placeholder, main.add-update form textarea::placeholder {
   color: hsl(0, 0%, 100%);
 }
-main.add-update section input:hover, main.add-update section textarea:hover {
+main.add-update form input:hover, main.add-update form textarea:hover {
   box-shadow: 10px 10px 0 hsl(29, 100%, 63%);
 }
-main.add-update section input:focus, main.add-update section textarea:focus {
+main.add-update form input:focus, main.add-update form textarea:focus {
   box-shadow: 10px 10px 0 hsl(29, 100%, 63%);
   background: hsl(208, 100%, 97%);
   border-color: hsl(212, 86%, 28%);
   color: hsl(212, 86%, 28%);
 }
-main.add-update section input:focus::placeholder, main.add-update section textarea:focus::placeholder {
+main.add-update form input:focus::placeholder, main.add-update form textarea:focus::placeholder {
   color: hsl(0, 0%, 18%);
 }
-main.add-update section textarea {
+main.add-update form textarea {
   height: 15em;
 }
 main.add-update div {
@@ -357,7 +357,7 @@ main.add-update div button i {
 }
 
 @media screen and (min-width: 1024px) {
-  main.add-update section input, main.add-update section textarea {
+  main.add-update form input, main.add-update form textarea {
     width: 50%;
   }
 }
@@ -517,6 +517,45 @@ a.redButton:hover, button.redButton:hover {
   color: hsl(0, 93%, 33%);
   background: hsl(0, 0%, 100%);
   border-color: hsl(0, 0%, 0%);
+}
+
+button#theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background: hsl(208, 29%, 91%);
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+button#theme span {
+  position: absolute;
+  background: hsl(208, 100%, 97%);
+  left: 0.5rem;
+  z-index: 200;
+  transition: all 0.3s ease;
+  width: 45%;
+  height: calc(100% - 0.8rem);
+  border-radius: 50px;
+}
+button#theme i {
+  font-size: 1.3rem;
+  color: hsl(212, 86%, 28%);
+  position: relative;
+  z-index: 220;
+  transition: all 0.3s ease;
+}
+button#theme.dark-mode {
+  background: hsl(212, 86%, 20%);
+}
+button#theme.dark-mode span {
+  left: 3.5rem;
+  background: hsl(212, 86%, 28%);
+}
+button#theme.dark-mode i {
+  color: hsl(0, 0%, 100%);
 }
 
 /*# sourceMappingURL=style.css.map */
