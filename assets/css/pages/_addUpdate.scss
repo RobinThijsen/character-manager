@@ -1,3 +1,86 @@
 main.add-update {
 	width: 100%;
+	min-height: 80vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	
+	figure {
+		
+		img {
+			border-radius: 50%;
+		}
+	}
+	
+	section {
+		width: 100%;
+		padding: 5vh 2em;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 2vh;
+		
+		input, textarea {
+			width: 95%;
+			background: $dark-blue;
+			box-shadow: 5px 5px 0 $black;
+			color: $white;
+			padding: 1.5em 2em;
+			transition: all .3s ease;
+			border: 3px solid transparent;
+			
+			&::placeholder {
+				color: $white;
+			}
+			
+			&:hover {
+				box-shadow: 10px 10px 0 $orange;
+			}
+			
+			&:focus {
+				box-shadow: 10px 10px 0 $orange;
+				background: $background;
+				border-color: $dark-blue;
+				color: $dark-blue;
+				
+				&::placeholder {
+					color: $text;
+				}
+			}
+		}
+		
+		textarea {
+			height: 15em;
+		}
+	}
+	
+	div {
+		width: 95%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 3vw;
+		
+		button {
+			font-size: 1rem;
+			padding: 1em 1.5em;
+			gap: .3em;
+			
+			i {
+				font-size: 1.2rem;
+			} 
+		}
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	main.add-update {
+		section {
+			input, textarea {
+				width: 50%;
+			}
+		}
+	}
 }

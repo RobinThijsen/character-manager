@@ -18,19 +18,20 @@
 		</div>
 	  <button data-value="1" id="theme">Make it dark</button>
 	</header>
-	<main class="add-update">
+	<main id="swup" class="add-update">
 		<section>
 			<input type="file" accept="image/png" name="image" id="file" required>
 			<input type="text" name="name" placeholder="Name..." id="name" required>
 			<input type="text" name="cite" placeholder="Citation..." id="sDesc" required>
 			<textarea name="desc" placeholder="Description..." id="desc" required></textarea>
-			<div>
-				<button id="saveBtn" type="submit" class="blueButton"></button>
-				<button id="delete" type="submit">Delete character</button>
-			</div>
 		</section>
+		<div>
+			<button id="saveBtn" type="submit" class="blueButton small"></button>
+			<button id="delete" type="submit" class="redButton">Delete character</button>
+		</div>
 	</main>
-	<script type="module" src="main.js"></script>
+	<script type="module" src="/assets/js/theme.js"></script>
+	<script type="module" src="/assets/js/main.js"></script>
 	<script type="module" src="/assets/js/addUpdate.js"></script>
   </body>
 </html>

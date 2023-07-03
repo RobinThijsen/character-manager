@@ -51,6 +51,10 @@ a.blueButton, button.blueButton {
 			} 
 		}
 	}
+	
+	&.small:hover {
+		box-shadow: 12px 12px 0 $orange;
+	}
 }
 
 @media screen and (min-width: 1024px) {

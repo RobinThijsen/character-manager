@@ -7,13 +7,10 @@ const theme = document.getElementById('theme')
  * create an article with data from API
  *
  */
-async function getSetCards() {
-  // read our JSON
-  let response = await fetch('https://character-database.becode.xyz/characters')
-  let characters = await response.json()
+function getSetCards(object) {
 
-  characters.map(c => {
-    if (c.image != undefined) {
+  object.map(c => {
+    //if (c.image != undefined) {
       // cards container
       const article = document.createElement('article')
       // div element container
@@ -40,43 +37,17 @@ async function getSetCards() {
       div.append(h2, cite, p, a)
       article.append(div)
       section.append(article)
-    } else {
+    /*} else {
       console.log("There was an error while trying to get the card " + c.id + "!")
-    }
+      console.log("info = " + c.name)
+    }*/
   })
 
-  return characters;
+  return object;
 }
 
-// getColor for theme
-const getColor = () => {
-  const r = document.querySelector(':root')
-  let rs = getComputedStyle(r)
-  console.log("The value of --blue is: " + rs.getPropertyValue('--blue'))
-}
+// read our JSON
+let response = await fetch('https://character-database.becode.xyz/characters')
+let characters = await response.json()
 
-// setColor for theme
-const setColor = (value, color) => {
-  const r = document.querySelector(':root')
-  r.style.setProperty(value, color)
-}
-
-getSetCards();
-
-// event on click on theme button
-theme.onclick = () => {
-  console.log(theme.getAttribute('data-value'))
-  if (theme.getAttribute("data-value") == '1') {
-    theme.innerText = "Make it white"
-    theme.setAttribute("data-value", "2")
-    
-    setColor('background', 'hsla(0, 0%, 18%, 1)')
-    setColor('text', 'hsla(208, 100%, 97%, 1)')
-  } else {
-    theme.innerText = "Make it dark"
-    theme.setAttribute("data-value", "1")
-    
-    setColor('background', 'hsla(208, 100%, 97%, 1)')
-    setColor('text', 'hsla(0, 0%, 18%, 1)')
-  }
-}
+getSetCards(characters);

@@ -1,9 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-:root {
-  --background: hsla(208, 100%, 97%, 1);
-  --text: hsla(0, 0%, 18%, 1);
-}
-
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -48,7 +43,54 @@ body {
   overflow-x: hidden;
   background: hsl(208, 100%, 97%);
 }
+body.dark-mode {
+  background: hsl(212, 86%, 28%);
+  color: hsl(0, 0%, 100%);
+}
+body.dark-mode header a h1 {
+  color: hsl(0, 0%, 100%);
+}
+body.dark-mode header span, body.dark-mode header span::after {
+  background: hsl(0, 0%, 100%);
+}
+body.dark-mode header h1.active {
+  color: hsl(29, 100%, 63%);
+}
+body.dark-mode main.add-update section input, body.dark-mode main.add-update section textarea {
+  background: hsl(0, 0%, 100%);
+  color: hsl(212, 86%, 28%);
+}
+body.dark-mode main.add-update section input::placeholder, body.dark-mode main.add-update section textarea::placeholder {
+  color: hsl(212, 86%, 28%);
+}
+body.dark-mode main.cards section#cards article div {
+  background: hsl(0, 0%, 100%);
+  color: hsl(212, 86%, 28%);
+}
+body.dark-mode main.cards section#cards article div a {
+  background: hsl(212, 86%, 28%);
+  color: hsl(0, 0%, 100%);
+}
+body.dark-mode a.blueButton, body.dark-mode button.blueButton {
+  background: hsl(0, 0%, 100%);
+  color: hsl(212, 86%, 28%);
+}
+body.dark-mode a.blueButton div i, body.dark-mode button.blueButton div i {
+  color: hsl(212, 86%, 28%);
+  animation-name: infiniteColorDark;
+}
 
+@keyframes infiniteColorDark {
+  0% {
+    color: hsl(212, 86%, 28%);
+  }
+  50% {
+    color: hsl(29, 100%, 63%);
+  }
+  100% {
+    color: hsl(212, 86%, 28%);
+  }
+}
 #pageCharacter {
   width: 100%;
   min-height: 80vh;
@@ -251,6 +293,74 @@ main.cards section#cards article:hover div h2, main.cards section#cards article:
     transform: skew(-5deg);
   }
 }
+main.add-update {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+main.add-update figure img {
+  border-radius: 50%;
+}
+main.add-update section {
+  width: 100%;
+  padding: 5vh 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vh;
+}
+main.add-update section input, main.add-update section textarea {
+  width: 95%;
+  background: hsl(212, 86%, 28%);
+  box-shadow: 5px 5px 0 hsl(0, 0%, 0%);
+  color: hsl(0, 0%, 100%);
+  padding: 1.5em 2em;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+}
+main.add-update section input::placeholder, main.add-update section textarea::placeholder {
+  color: hsl(0, 0%, 100%);
+}
+main.add-update section input:hover, main.add-update section textarea:hover {
+  box-shadow: 10px 10px 0 hsl(29, 100%, 63%);
+}
+main.add-update section input:focus, main.add-update section textarea:focus {
+  box-shadow: 10px 10px 0 hsl(29, 100%, 63%);
+  background: hsl(208, 100%, 97%);
+  border-color: hsl(212, 86%, 28%);
+  color: hsl(212, 86%, 28%);
+}
+main.add-update section input:focus::placeholder, main.add-update section textarea:focus::placeholder {
+  color: hsl(0, 0%, 18%);
+}
+main.add-update section textarea {
+  height: 15em;
+}
+main.add-update div {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3vw;
+}
+main.add-update div button {
+  font-size: 1rem;
+  padding: 1em 1.5em;
+  gap: 0.3em;
+}
+main.add-update div button i {
+  font-size: 1.2rem;
+}
+
+@media screen and (min-width: 1024px) {
+  main.add-update section input, main.add-update section textarea {
+    width: 50%;
+  }
+}
 header {
   width: 100%;
   padding: 5vh 3vw;
@@ -263,13 +373,16 @@ header div {
   align-items: center;
   gap: 1vw;
 }
-header div h1 {
+header div > h1 {
   font-size: 2.5em;
   position: relative;
   z-index: 1;
 }
-header div h1.active {
+header div > h1.active {
   color: hsl(212, 86%, 28%);
+}
+header div > h1:nth-child(1) {
+  display: none;
 }
 header div a {
   position: relative;
@@ -277,6 +390,8 @@ header div a {
 header div a h1 {
   color: hsl(0, 0%, 0%);
   font-family: "Bangers", cursive;
+  z-index: 2;
+  position: relative;
 }
 header div a::before {
   content: "";
@@ -291,14 +406,14 @@ header div a::before {
 header div a:hover::before {
   width: 90%;
 }
-header div span {
+header div > span {
   width: 30px;
   height: 5px;
   background: hsl(0, 0%, 0%);
   position: relative;
   transform: rotate(45deg);
 }
-header div span::after {
+header div > span::after {
   content: "";
   width: 30px;
   height: 5px;
@@ -307,10 +422,19 @@ header div span::after {
   top: 0;
   transform: rotate(-90deg);
 }
+header div > span:nth-child(2) {
+  display: none;
+}
 
 @media screen and (min-width: 1024px) {
   header div h1 {
     font-size: 3vw;
+  }
+  header div h1:nth-child(1) {
+    display: inline;
+  }
+  header div span:nth-child(2) {
+    display: inline;
   }
 }
 a.blueButton, button.blueButton {
@@ -357,6 +481,9 @@ a.blueButton:hover div i:nth-child(3), button.blueButton:hover div i:nth-child(3
   right: -0.5em;
   animation-delay: 0.5s;
 }
+a.blueButton.small:hover, button.blueButton.small:hover {
+  box-shadow: 12px 12px 0 hsl(29, 100%, 63%);
+}
 
 @media screen and (min-width: 1024px) {
   a.blueButton {
@@ -373,6 +500,23 @@ a.blueButton:hover div i:nth-child(3), button.blueButton:hover div i:nth-child(3
   100% {
     color: hsl(0, 0%, 100%);
   }
+}
+a.redButton, button.redButton {
+  font-size: 2rem;
+  padding: 1em 2em;
+  font-family: "Bangers", cursive;
+  background: hsl(0, 93%, 33%);
+  box-shadow: 6px 6px 0 hsl(0, 0%, 0%);
+  color: hsl(0, 0%, 100%);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid hsl(0, 93%, 33%);
+}
+a.redButton:hover, button.redButton:hover {
+  box-shadow: 12px 12px 0 hsl(0, 93%, 33%);
+  color: hsl(0, 93%, 33%);
+  background: hsl(0, 0%, 100%);
+  border-color: hsl(0, 0%, 0%);
 }
 
 /*# sourceMappingURL=style.css.map */
