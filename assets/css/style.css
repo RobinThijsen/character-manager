@@ -367,5 +367,14 @@ a.blueButton:hover div i:nth-child(3), button.blueButton:hover div i:nth-child(3
     color: hsl(0, 0%, 100%);
   }
 }
+#searchBar {
+  margin: 1.5rem 0.5rem;
+}
+#searchBar input {
+  font-family: "Bangers", cursive;
+  border-bottom: 2px solid #000000;
+  padding: 1em 1.5em;
+  font-size: 2rem;
+}
 
 /*# sourceMappingURL=style.css.map */

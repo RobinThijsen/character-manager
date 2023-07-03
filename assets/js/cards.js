@@ -16,10 +16,12 @@ async function getSetCards() {
     if (c.image != undefined) {
       // cards container
       const article = document.createElement('article')
+      article.classList.add("cardHeroes");
       // div element container
       const div = document.createElement('div')
       // cards name
       const h2 = document.createElement('h2')
+      h2.classList.add("cardName")
       h2.innerText = c.name
       // cards short description
       const cite = document.createElement('cite')
@@ -80,3 +82,4 @@ theme.onclick = () => {
     setColor('text', 'hsla(0, 0%, 18%, 1)')
   }
 }
+
