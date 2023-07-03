@@ -13,12 +13,10 @@ function getSetCards(object) {
     //if (c.image != undefined) {
       // cards container
       const article = document.createElement('article')
-      article.classList.add("cardHeroes");
       // div element container
       const div = document.createElement('div')
       // cards name
       const h2 = document.createElement('h2')
-      h2.classList.add("cardName")
       h2.innerText = c.name
       // cards short description
       const cite = document.createElement('cite')
@@ -48,34 +46,11 @@ function getSetCards(object) {
   return object;
 }
 
-// read our JSON
-let response = await fetch('https://character-database.becode.xyz/characters')
-let characters = await response.json()
-
-// setColor for theme
-const setColor = (value, color) => {
-  const r = document.querySelector(':root')
-  r.style.setProperty(value, color)
+async function getCharacters() {
+  // read our JSON
+  let response = await fetch('https://character-database.becode.xyz/characters')
+  let characters = await response.json()
+  
+  getSetCards(characters);
 }
-
-getSetCards();
-
-// event on click on theme button
-theme.onclick = () => {
-  console.log(theme.getAttribute('data-value'))
-  if (theme.getAttribute("data-value") == '1') {
-    theme.innerText = "Make it white"
-    theme.setAttribute("data-value", "2")
-    
-    setColor('background', 'hsla(0, 0%, 18%, 1)')
-    setColor('text', 'hsla(208, 100%, 97%, 1)')
-  } else {
-    theme.innerText = "Make it dark"
-    theme.setAttribute("data-value", "1")
-    
-    setColor('background', 'hsla(208, 100%, 97%, 1)')
-    setColor('text', 'hsla(0, 0%, 18%, 1)')
-  }
-}
-
-getSetCards(characters);
+getCharacters()
