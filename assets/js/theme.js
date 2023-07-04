@@ -1,5 +1,4 @@
 const theme = document.getElementById('theme')
-console.log(localStorage.getItem('theme'))
 
 if (localStorage.getItem('theme') != null) {
 	if (localStorage.getItem('theme') == "dark") {

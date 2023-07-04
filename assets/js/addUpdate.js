@@ -41,14 +41,13 @@ if (id != undefined) {
  * @param {src} url of image
  *
  */
-function toDataURL(src, callback) {
+function toDataURL(src) {
 	if (src) {
 		const reader = new FileReader()
 		reader.onloadend = () => {
 			console.log(reader.result)
 		}
-		
-		reader.readAsDataURL(src)
+		return reader.readAsDataURL(src)
 	}
 }
 /**
@@ -108,13 +107,7 @@ function setCard(nameInput, shortDescInput, descInput, fileInput) {
   data.name = nameInput.value
   data.shortDescription = shortDescInput.value
   data.description = descInput.value
-  console.log("files = " + file)
-  
-  toDataURL(file, function(dataURL) {
-	data.image = dataURL
-  })
-  
-  console.log("data = " + toDataURL(file))
+  data.image = toDataURL(file)
   
   console.log("image = " + data.image)
   
@@ -175,7 +168,6 @@ async function deleteRequest(url) {
 
 // event on click on add/update button
 addUpdate.onclick = () => {
-	console.log("id = " + id)
 	
 	// if id put request to update
 	if (id != null) {
