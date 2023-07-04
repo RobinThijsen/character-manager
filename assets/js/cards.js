@@ -30,7 +30,7 @@ function getSetCards(object) {
       const a = document.createElement('a')
       a.innerText = "Details"
       a.classList.add('blueButton')
-      a.href = '/onlyCharacter.html?id=' + c.id
+      a.href = './onlyCharacter.html?id=' + c.id
       
       article.style.backgroundImage = "url(data:image/png;base64," + c.image + ")"
       

@@ -170,7 +170,7 @@ async function deleteRequest(url) {
 		method: 'DELETE',
 	})
 	
-	window.location.href = "/index.html"
+	window.location.href = "./index.html"
 }
 
 // event on click on add/update button

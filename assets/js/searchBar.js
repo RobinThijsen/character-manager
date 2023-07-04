@@ -88,7 +88,7 @@ button.onclick = () =>{
     reSearch(articles, section)
   };*/
 
-  let button = document.getElementById('search');
+  let button = document.querySelector('.search');
 
   button.addEventListener('click',async()=>{
   
