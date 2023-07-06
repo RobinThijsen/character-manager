@@ -7,7 +7,9 @@ if (localStorage.getItem('theme') != null) {
 	}
 }
 
-// event on click on theme button
+/*
+ * click to choose theme
+ */
 theme.onclick = () => {
 	if (document.body.classList.contains('dark-mode')) {
 		document.body.classList.remove('dark-mode')

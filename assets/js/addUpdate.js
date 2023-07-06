@@ -38,10 +38,10 @@ if (id != undefined) {
 /**
  *
  * print reader.result
- * @param {src} url of image
+ * @param {string} src url of image
  *
  */
-function toDataURL(src) {
+const toDataURL = (src) => {
 	if (src) {
 		const reader = new FileReader()
 		reader.onloadend = () => {
@@ -53,9 +53,9 @@ function toDataURL(src) {
 /**
  *
  * Return the result of the fetch search API
- * @param {url} url of the API
- * @param {id} id of the character in API
- * @return {result} result of the fetch
+ * @param {string} src url of the API
+ * @param {string} id of the character in API
+ * @return {json} result of the fetch
  *
  */
 async function getCard(url, id) {
@@ -68,13 +68,13 @@ async function getCard(url, id) {
 /**
  *
  * set value of character in input
- * @param {url} url of the API
- * @param {id} id of the character on API
- * @param {nameInput} input for the name
- * @param {shortDescInput} input for the short desc
- * @param {descInput} input for the desc
- * @param {fileInput} input for the file
- * @param {h1} element h1 to modify title
+ * @param {string} url of the API
+ * @param {string} id of the character on API
+ * @param {HTMLElement} nameInput input for the name
+ * @param {HTMLElement} shortDescInput input for the short desc
+ * @param {HTMLElement} descInput input for the desc
+ * @param {HTMLElement} fileInput input for the file
+ * @param {HTMLElement} h1 element h1 to modify title
  *
  */
 async function setCardInInput(url, id, nameInput, shortDescInput, descInput, fileInput, h1) {
@@ -94,7 +94,17 @@ async function setCardInInput(url, id, nameInput, shortDescInput, descInput, fil
 	main.prepend(figure)
 }
 
-function setCard(nameInput, shortDescInput, descInput, fileInput) {
+/** 
+ *
+ * init arr with data in input
+ * @param {HTMLElement} nameInput input of the name
+ * @param {HTMLElement} shortDescInput input of the name
+ * @param {HTMLElement} descInput input of the name
+ * @param {HTMLElement} fileInput input of the name
+ * @return {[string]} data of the input in array
+ *
+ */
+const setCard = (nameInput, shortDescInput, descInput, fileInput) => {
   // read our JSON
   let data = {
 	name: '',
@@ -116,10 +126,9 @@ function setCard(nameInput, shortDescInput, descInput, fileInput) {
 
 /**
  *
- * Post the data in the API
- * @param {url} url of the API
- * @param {data} data to set in the API
- * @return {result} result of the fetch
+ * Post the data in the API (add)
+ * @param {string} url of the API
+ * @param {[string]} data to set in the API
  *
  */
 async function postRequest(url, data) {
@@ -134,6 +143,13 @@ async function postRequest(url, data) {
 	const response = await fetch(url, postObje)
 }
 
+/**
+ *
+ * Put the data in the API (update)
+ * @param {string} url of the API
+ * @param {string} id of the element to update in the API
+ * @param {[string]} data to set in the API
+ */
 async function putRequest(url, id, data) {
 	let postObje = {
 		method: 'PUT',
@@ -145,15 +161,13 @@ async function putRequest(url, id, data) {
 	
 	const response = await fetch(url + id, postObje)
 	const result = response.json()
-	return result
 }
 
 /**
  *
- * Delete a data in the API
- * @param {url} url of the API
- * @param {id} id of the data to delete in API
- * @return {response} the result of the delete
+ * Delete a data in the API (delete)
+ * @param {string} url of the API
+ * @param {string} id of the data to delete in API
  *
  */
 async function deleteRequest(url) {

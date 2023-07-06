@@ -1,8 +1,11 @@
-
 const id = (new URLSearchParams(window.location.search)).get('id');
-//console.log(id);
 
-
+/** 
+ *
+ * select one character from the API
+ * @param {string} id of the character
+ *
+ */
 async function onlyCharactere(id){
 let response = await fetch('https://character-database.becode.xyz/characters/'+ id);
 let c = await response.json();
