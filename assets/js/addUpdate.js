@@ -1,3 +1,5 @@
+import { postRequest, putRequest, deleteRequest } from "./async/request"
+
 const id = (new URLSearchParams(window.location.search)).get('id')
 
 const main = document.querySelector(".add-update")
@@ -122,62 +124,6 @@ const setCard = (nameInput, shortDescInput, descInput, fileInput) => {
   console.log("image = " + data.image)
   
   return data
-}
-
-/**
- *
- * Post the data in the API (add)
- * @param {string} url of the API
- * @param {[string]} data to set in the API
- *
- */
-async function postRequest(url, data) {
-	let postObje = {
-		method: 'POST',
-		body: JSON.stringify(data),
-		headers: {
-			"Content-type": "application/json; charset=UTF-8"
-		}
-	}
-	
-	const response = await fetch(url, postObje)
-}
-
-/**
- *
- * Put the data in the API (update)
- * @param {string} url of the API
- * @param {string} id of the element to update in the API
- * @param {[string]} data to set in the API
- */
-async function putRequest(url, id, data) {
-	let postObje = {
-		method: 'PUT',
-		body: JSON.stringify(data),
-		headers: {
-			"Content-type": "application/json; charset=UTF-8"
-		}
-	}
-	
-	const response = await fetch(url + id, postObje)
-	const result = response.json()
-}
-
-/**
- *
- * Delete a data in the API (delete)
- * @param {string} url of the API
- * @param {string} id of the data to delete in API
- *
- */
-async function deleteRequest(url) {
-	console.log('delete')
-	
-	const response = await fetch(url, {
-		method: 'DELETE',
-	})
-	
-	window.location.href = "./index.html"
 }
 
 // event on click on add/update button

@@ -1,47 +1,5 @@
+import { onlyCharactere } from "./async/request";
+
 const id = (new URLSearchParams(window.location.search)).get('id');
 
-/** 
- *
- * select one character from the API
- * @param {string} id of the character
- *
- */
-async function onlyCharactere(id){
-let response = await fetch('https://character-database.becode.xyz/characters/'+ id);
-let c = await response.json();
-
-const h1 = document.querySelector('#onlyName');
-h1.innerText = c.name;
-
-const nameCard = document.createElement('h2');
-nameCard.innerText = c.name;
-
-const section = document.querySelector('#onlyCharacter');
-
-const imgProfil = document.createElement('img');
-imgProfil.src = "data:image/png;base64," + c.image;
-
-//name character
-const h2 = document.createElement('h2');
-h2.innerText = c.name;
-
-//bubbles icon
-
-
-const cite = document.createElement('cite')
-cite.innerText = c.shortDescription
-const blocText = document.createElement('div');
-blocText.className = 'blocText';
-const p = document.createElement('p')
-p.innerText = c.description
-
-
-blocText.append(p);
-
-section.prepend(imgProfil, h2, cite, blocText);
-
-const a = document.querySelector('.blueButton');
-a.href = '/addAndUpdate.html?id=' + c.id;
-
-}
 onlyCharactere(id);

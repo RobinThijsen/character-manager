@@ -1,5 +1,5 @@
 const section = document.querySelector('#cards');
-const articles = section.querySelector("article")
+const articles = section.querySelectorAll("article")
 
 /**
  *
@@ -9,6 +9,7 @@ const articles = section.querySelector("article")
  *
  */
 const getSetCards = (object) => {
+  
   object.map(c => {
     //if (c.image != undefined) {
     // cards container
@@ -43,7 +44,7 @@ const getSetCards = (object) => {
   
   return object;
 }
-  
+
 /**
  *
  * search character by their names
@@ -51,21 +52,20 @@ const getSetCards = (object) => {
  * @param {string} name to search
  *
  */
-async function reSearch(section, name) {
+async function reSearch(section, name, articles) {
   if (name != undefined){
-    let response = await fetch('https://character-database.becode.xyz/characters?name=' + name)
-    let characters = await response.json()
-    //console.log(articles)
-    for (let article of articles) {
-      console.log(article)
-      article.remove()
-    }
-    getSetCards(characters, section)  
+  let response = await fetch('https://character-database.becode.xyz/characters?name=' + name)
+  let characters = await response.json()
+  
+  for (let article of articles) {
+    console.log(article)
+    article.remove()
+  }
+  getSetCards(characters, section)
   }
 }
-  
-button.onclick = () =>{
+
+document.addEventListener('keypress', () => { 
   let name = document.querySelector('#search-input').value;
-  
-  reSearch(articles, name)
-};
+  reSearch(articles, name, articles)
+});
